@@ -14,7 +14,10 @@ class ProcManager
 
   def kill(name)
     procs = @procs.select {|process| process.name == name}
-    procs.each {|process| system "kill #{process.pid}"}
+    procs.each do |process|
+      Process.detach process.pid
+      system "kill #{process.pid}"
+    end
     @procs.delete_if {|process| process.name == name}
   end
 
@@ -29,7 +32,8 @@ class ProcManager
   def killall
     until @procs.empty?
       process = @procs.pop
-      system "kill #{process.pid}"
+      Process.detach process.pid
+      system "kill #{process.pid} 1>/dev/null 2>&1"
     end
   end
 
