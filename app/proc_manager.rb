@@ -44,4 +44,18 @@ class ProcManager
   private
 
   ProcContainer = Struct.new(:name, :pid)
+
+  def spawn_garbage_collector
+    thread = Thread.new do
+      while true
+        @procs.each do |process|
+          if Process.wait(process.pid, Process::WNOHANG)
+            @procs.delete process
+          end
+        end
+        sleep 0.0001
+      end
+    end
+    thread
+  end
 end
