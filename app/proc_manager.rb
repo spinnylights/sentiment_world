@@ -13,7 +13,6 @@ class ProcManager
   # to the underlying shell.
   def spawn(name, cmd)
     pid = Kernel.spawn(cmd, [:out, :err]=>'/dev/null')
-    Process.detach pid
     @procs << ProcContainer.new(name, pid)
     pid
   end
@@ -50,11 +49,13 @@ class ProcManager
 
   # Checks to see if a proc is currently running.
   def running?(name)
+    collect_garbage
     @procs.any? {|process| process.name == name}
   end
 
   # Checks to see if any procs are currently running.
   def running_procs?
+    collect_garbage
     !@procs.empty?
   end
 
@@ -62,17 +63,11 @@ class ProcManager
 
   ProcContainer = Struct.new(:name, :pid)
 
-  def spawn_garbage_collector
-    thread = Thread.new do
-      while true
-        @procs.each do |process|
-          if Process.wait(process.pid, Process::WNOHANG)
-            @procs.delete process
-          end
-        end
-        sleep 0.0001
+  def collect_garbage
+    @procs.each do |process|
+      if Process.wait(process.pid, Process::WNOHANG)
+        @procs.delete process
       end
     end
-    thread
   end
 end

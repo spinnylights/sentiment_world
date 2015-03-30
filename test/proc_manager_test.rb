@@ -58,8 +58,8 @@ class TestProcManager < Minitest::Test
 
   def test_whether_finished_procs_are_removed_from_list
     @procman.spawn('true', 'true')
-    sleep 0.1
-    refute @procman.running?('true'), "this fails sometimes due to race conditions; if it mostly passes don't worry about it"
+    sleep 0.001
+    refute @procman.running?('true')
   end
 
   def teardown
