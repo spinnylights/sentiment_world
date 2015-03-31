@@ -8,7 +8,7 @@ class MediaPlayerTest < MiniTest::Test
       config_file = Tempfile.new('config')
       config_hash = {pretty_song: {file: 'herlequines.mp3', type: 'audio'}}
       config_file.write config_hash.to_yaml
-      config_file.close
+      config_file.rewind
       procman_mock = MiniTest::Mock.new
       media_player = MediaPlayer.new({
         config_file: config_file, proc_man: procman_mock
@@ -17,7 +17,7 @@ class MediaPlayerTest < MiniTest::Test
       media_player.play 'pretty_song'
       procman_mock.verify
     ensure
-      config_file.unlink
+      config_file.close!
     end
   end
 
@@ -26,7 +26,7 @@ class MediaPlayerTest < MiniTest::Test
       config_file = Tempfile.new('config')
       config_hash = {pretty_vid: {file: 'waves.webm', type: 'video'}}
       config_file.write config_hash.to_yaml
-      config_file.close
+      config_file.rewind
       procman_mock = MiniTest::Mock.new
       media_player = MediaPlayer.new(
         config_file: config_file, proc_man: procman_mock
@@ -35,7 +35,7 @@ class MediaPlayerTest < MiniTest::Test
       media_player.play 'pretty_vid'
       procman_mock.verify
     ensure
-      config_file.unlink
+      config_file.close!
     end
   end
 
