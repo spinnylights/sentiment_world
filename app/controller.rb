@@ -2,6 +2,7 @@ require 'yaml'
 require_relative './media_player'
 require_relative './printer'
 
+# The interface between keypresses and media events.
 class Controller
   def initialize(args={})
     @config = load_config(args[:config_file])
@@ -9,6 +10,8 @@ class Controller
     @printer      = args[:printer]
   end
 
+  # Takes a char and uses it to look up a media file in the config, then plays
+  # it if it has a media_player and outputs text if it has a printer.
   def process_keypress(key)
     entry = @config.select {|k,v| v[:key] == 'l'}
     tag = entry.keys[0]
