@@ -15,7 +15,7 @@ class MediaPlayer
   def play(tag)
     file_info = @config[tag.to_sym]
     if file_info.nil?
-      puts "#{tag} was not found in config :("
+      STDERR.puts "#{tag} was not found in config :("
       return
     end
     file_path = File.expand_path("../../media/#{file_info[:file]}", __FILE__)
@@ -24,7 +24,7 @@ class MediaPlayer
     elsif file_info[:type] == 'video'
       @proc_man.spawn("#{tag}", "vlc #{file_path}")
     else
-      puts "#{file_info[:type]} is not a known file type :("
+      STDERR.puts "#{file_info[:type]} is not a known file type :("
     end
   end
 
