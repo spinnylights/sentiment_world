@@ -4,8 +4,8 @@ require_relative './splitter.rb'
 # item from the list into an output stream when asked. By default, uses 
 # '../config/printer.txt' relative to the file it's defined in and STDOUT.
 class Printer
-  def initialize(args)
-    defaults.merge args
+  def initialize(args={})
+    args = defaults.merge args
     @file_path     = args[:file_path]
     @output_stream = args[:output_stream]
     @print_list    = []
