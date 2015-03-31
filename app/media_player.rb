@@ -1,11 +1,12 @@
 require_relative './proc_manager.rb'
 
 # Spawns media-playing processes. Makes use of a config file with a list of
-# media files and their file types, stored by default at config/media_files.yaml. Collaborates with ProcManager by default.
+# media files and their file types.
 class MediaPlayer
-  def initialize(args)
-    args = defaults.merge args
-    @config      = load_config(args[:config_file])
+  def initialize(args={})
+    if args[:config_file]
+      @config    = load_config(args[:config_file])
+    end
     @proc_man    = args[:proc_man]
   end
 
@@ -33,13 +34,6 @@ class MediaPlayer
   end
 
   private
-
-  def defaults
-    {
-      config_file: File.expand_path(__FILE__, '../../config/media_files.yaml'),
-      proc_man: ProcManager.new 
-    }
-  end
 
   def load_config(config_file)
     config_text = File.open(config_file) { |f| f.read }
