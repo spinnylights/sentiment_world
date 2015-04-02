@@ -1,3 +1,5 @@
+require 'io/console'
+
 class KeypressReader
   def initialize(stream=STDIN)
     @stream = stream
