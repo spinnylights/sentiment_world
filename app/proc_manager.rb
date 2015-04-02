@@ -11,8 +11,13 @@ class ProcManager
   # "name" is an arbitrary string of your choice used to track the process
   # internally. "cmd" is a string containing the command you wish to pass
   # to the underlying shell.
-  def spawn(name, cmd)
-    pid = Kernel.spawn(cmd, [:out, :err]=>'/dev/null')
+  def spawn(name, cmd, opts={})
+    pid = 0
+    if opts[:mute_stdout]
+      pid = Kernel.spawn(cmd, [:out, :err]=>'/dev/null')
+    else
+      pid = Kernel.spawn(cmd, [:err]=>'/dev/null')
+    end
     @procs << ProcContainer.new(name, pid)
     pid
   end
@@ -30,11 +35,11 @@ class ProcManager
 
   # Spawns a proc if it's not already running, and kills it if it is. Searches
   # by name.
-  def toggle(name, cmd)
+  def toggle(name, cmd, opts={})
     if running? name
       kill name
     else
-      spawn(name, cmd)
+      spawn(name, cmd, opts)
     end
   end
 
