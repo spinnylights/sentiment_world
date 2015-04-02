@@ -8,6 +8,7 @@ class MediaPlayer
       @config    = load_config(args[:config_file])
     end
     @proc_man    = args[:proc_man]
+    @vid_playing = false
   end
 
   # Plays a media file. Takes its tag from the config file as the only
@@ -20,12 +21,18 @@ class MediaPlayer
       return
     end
     file_path = File.expand_path("../../media/#{file_info[:file]}", __FILE__)
-    if file_info[:type] == 'audio'
-      @proc_man.spawn("#{tag}", "mplayer #{file_path}")
+    if @vid_playing
+      @proc_man.killall
+      system 'clear'
+      @vid_playing = !@vid_playing
+    elsif file_info[:type] == 'audio'
+      @proc_man.toggle("#{tag}", "mplayer -really-quiet #{file_path}")
     elsif file_info[:type] == 'video'
-      @proc_man.spawn("#{tag}", "vlc #{file_path}")
-    else
-      STDERR.puts "#{file_info[:type]} is not a known file type :("
+      system 'clear'
+      @proc_man.killall
+      @proc_man.spawn("#{tag}", "vlc --quiet --crop 5:3 #{file_path}")
+      @vid_playing = !@vid_playing
+      system 'clear'
     end
   end
 
