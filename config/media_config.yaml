@@ -1,0 +1,16 @@
+:herlequines:
+  :file:
+    'herlequines.mp3'
+  :type:
+    'audio'
+  :key:
+    'h'
+
+:waves:
+  :file:
+    'waves.mp4'
+  :type:
+    'video'
+  :key:
+    ' '
+

@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+# require_relative './app/*.rb'
+project_root = File.dirname(File.absolute_path(__FILE__))
+Dir.glob(project_root + '/app/*.rb', &method(:require))
+
+media_config = File.expand_path('../config/media_config.yaml', __FILE__)
+text_file    = File.expand_path('./config/to_print.txt')
+
+keypress_reader = KeypressReader.new
+proc_manager = ProcManager.new
+media_player = MediaPlayer.new(config_file: media_config, proc_man: proc_manager)
+printer = Printer.new(file_path: text_file)
+controller = Controller.new(
+  config_file: media_config, media_player: media_player, printer: printer
+)
+
+begin
+  system 'clear'
+  while true
+    char = keypress_reader.read
+    controller.process_keypress(char)
+  end
+ensure
+  proc_manager.killall
+end
+
+exit 0
