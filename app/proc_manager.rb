@@ -28,7 +28,7 @@ class ProcManager
     procs = @procs.select {|process| process.name == name}
     procs.each do |process|
       Process.detach process.pid
-      system "kill #{process.pid}"
+      system "kill -s 9 #{process.pid}"
     end
     @procs.delete_if {|process| process.name == name}
   end
@@ -48,7 +48,7 @@ class ProcManager
     until @procs.empty?
       process = @procs.pop
       Process.detach process.pid
-      system "kill #{process.pid} 1>/dev/null 2>&1"
+      system "kill -s 9 #{process.pid} 1>/dev/null 2>&1"
     end
   end
 
