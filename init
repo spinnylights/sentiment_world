@@ -17,6 +17,7 @@ controller = Controller.new(
 
 begin
   system 'clear'
+  controller.process_keypress('0')
   while true
     char = keypress_reader.read
     controller.process_keypress(char)
