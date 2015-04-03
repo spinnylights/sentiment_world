@@ -16,7 +16,7 @@ class Controller
     if char == "\e" then exit 0 end
     entry = @config.select {|k,v| v[:key] == "#{char}"}
     tag = entry.keys[0]
-    if tag.nil? then return end
+    if tag.nil? then @printer.print; return end
     if @media_player then @media_player.play tag end
     if @printer then @printer.print end
   end
