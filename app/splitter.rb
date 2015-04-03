@@ -13,6 +13,7 @@ class Splitter
     unless to_split[-1] == "\n"
       to_split << "\n"
     end
+    to_split = to_split.split("\n").shuffle.join("\n")
     to_split.scan regex
   end
 end
