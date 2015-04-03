@@ -17,7 +17,11 @@ class Printer
     if @print_list.empty?
       @print_list = gen_print_list
     end
-    @output_stream.print @print_list.pop
+    to_print = @print_list.pop
+    @output_stream.print to_print
+    if to_print[-1] == "\n"
+      @output_stream.print "\n"
+    end
   end
 
   private
