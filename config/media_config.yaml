@@ -1,10 +1,274 @@
-:herlequines:
+:a:
   :file:
-    'herlequines.mp3'
+    'a.mp3'
+  :type:
+    'audio'
+  :key:
+    'a'
+
+:b:
+  :file:
+    'b.mp3'
+  :type:
+    'audio'
+  :key:
+    'b'
+
+:c:
+  :file:
+    'c.mp3'
+  :type:
+    'audio'
+  :key:
+    'c'
+
+:d:
+  :file:
+    'd.mp3'
+  :type:
+    'audio'
+  :key:
+    'd'
+
+:e:
+  :file:
+    'e.mp3'
+  :type:
+    'audio'
+  :key:
+    'e'
+
+:f:
+  :file:
+    'f.mp3'
+  :type:
+    'audio'
+  :key:
+    'f'
+
+:g:
+  :file:
+    'g.mp3'
+  :type:
+    'audio'
+  :key:
+    'g'
+
+:h:
+  :file:
+    'h.mp3'
   :type:
     'audio'
   :key:
     'h'
+
+:i:
+  :file:
+    'i.mp3'
+  :type:
+    'audio'
+  :key:
+    'i'
+
+:j:
+  :file:
+    'j.mp3'
+  :type:
+    'audio'
+  :key:
+    'j'
+
+:k:
+  :file:
+    'k.mp3'
+  :type:
+    'audio'
+  :key:
+    'k'
+
+:l:
+  :file:
+    'l.mp3'
+  :type:
+    'audio'
+  :key:
+    'l'
+
+:m:
+  :file:
+    'm.mp3'
+  :type:
+    'audio'
+  :key:
+    'm'
+
+:n:
+  :file:
+    'n.mp3'
+  :type:
+    'audio'
+  :key:
+    'n'
+
+:o:
+  :file:
+    'o.mp3'
+  :type:
+    'audio'
+  :key:
+    'o'
+
+:p:
+  :file:
+    'p.mp3'
+  :type:
+    'audio'
+  :key:
+    'p'
+
+:q:
+  :file:
+    'q.mp3'
+  :type:
+    'audio'
+  :key:
+    'q'
+
+:r:
+  :file:
+    'r.mp3'
+  :type:
+    'audio'
+  :key:
+    'r'
+
+:s:
+  :file:
+    's.mp3'
+  :type:
+    'audio'
+  :key:
+    's'
+
+:t:
+  :file:
+    't.mp3'
+  :type:
+    'audio'
+  :key:
+    't'
+
+:u:
+  :file:
+    'u.mp3'
+  :type:
+    'audio'
+  :key:
+    'u'
+
+:v:
+  :file:
+    'v.mp3'
+  :type:
+    'audio'
+  :key:
+    'v'
+
+:w:
+  :file:
+    'w.mp3'
+  :type:
+    'audio'
+  :key:
+    'w'
+
+:x:
+  :file:
+    'x.mp3'
+  :type:
+    'audio'
+  :key:
+    'x'
+
+:y:
+  :file:
+    'y.mp3'
+  :type:
+    'audio'
+  :key:
+    'y'
+
+:z:
+  :file:
+    'z.mp3'
+  :type:
+    'audio'
+  :key:
+    'z'
+
+:apostrophe:
+  :file:
+    'apostrophe.mp3'
+  :type:
+    'audio'
+  :key:
+    "'"
+
+:backslash:
+  :file:
+    'backslash.mp3'
+  :type:
+    'audio'
+  :key:
+    "\\"
+
+:close_bracket:
+  :file:
+    'close_bracket.mp3'
+  :type:
+    'audio'
+  :key:
+    ']'
+
+:comma:
+  :file:
+    'comma.mp3'
+  :type:
+    'audio'
+  :key:
+    ','
+
+:dot:
+  :file:
+    'dot.mp3'
+  :type:
+    'audio'
+  :key:
+    '.'
+
+:open_bracket:
+  :file:
+    'open_bracket.mp3'
+  :type:
+    'audio'
+  :key:
+    '['
+
+:slash:
+  :file:
+    'slash.mp3'
+  :type:
+    'audio'
+  :key:
+    '/'
+
+:semicolon:
+  :file:
+    'semicolon.mp3'
+  :type:
+    'audio'
+  :key:
+    ';'
 
 :waves:
   :file:
