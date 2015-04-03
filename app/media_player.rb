@@ -23,7 +23,7 @@ class MediaPlayer
     file_path = File.expand_path("../../media/#{file_info[:file]}", __FILE__)
     if @vid_playing
       @proc_man.killall
-      system 'clear'
+      system 'reset'
       @vid_playing = !@vid_playing
     elsif file_info[:type] == 'audio'
       @proc_man.toggle("#{tag}", "mplayer -really-quiet #{file_path}")
