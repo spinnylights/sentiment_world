@@ -1,7 +1,8 @@
 class Splitter
-  attr_accessor :string
+  attr_accessor :string, :regex
   def initialize(string)
     @string = string
+    @regex = /[^\.!?\;]+[\.!?\;]"* |[^\n]+\n/
   end
 
   # Splits a string up on periods followed by spaces, newlines, or periods 
@@ -12,6 +13,6 @@ class Splitter
     unless to_split[-1] == "\n"
       to_split << "\n"
     end
-    to_split.scan /.+\. |.+\.?\n/
+    to_split.scan regex
   end
 end
