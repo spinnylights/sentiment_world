@@ -13,7 +13,7 @@ class Controller
   # Takes a char and uses it to look up a media file in the config, then plays
   # it if it has a media_player and outputs text if it has a printer.
   def process_keypress(char)
-    if char == "\e" then exit 0 end
+    if char == "\u001a" then puts "\n"; exit 0 end
     entry = @config.select {|k,v| v[:key] == "#{char}"}
     tag = entry.keys[0]
     if tag.nil? then @printer.print; return end
