@@ -5,7 +5,7 @@ project_root = File.dirname(File.absolute_path(__FILE__))
 Dir.glob(project_root + '/app/*.rb', &method(:require))
 
 media_config = File.expand_path('../config/media_config.yaml', __FILE__)
-text_file    = File.expand_path('./media/text.txt')
+text_file    = File.expand_path('../media/text.txt', __FILE__)
 
 keypress_reader = KeypressReader.new
 proc_manager = ProcManager.new
