@@ -32,7 +32,15 @@ class MediaPlayer
       @proc_man.killall
       @proc_man.spawn("#{tag}", "vlc --quiet --crop 5:3 #{file_path}")
       @vid_playing = !@vid_playing
-      system 'clear'
+     # Thread.new {
+     #   sleep 3
+     #   if @proc_man.running?('waves')
+     #     @proc_man.kill('waves')
+     #     system 'reset'
+     #     @vid_playing = false
+     #   end
+     # }.join
+     # system 'clear'
     end
   end
 
